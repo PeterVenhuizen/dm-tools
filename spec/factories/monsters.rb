@@ -60,7 +60,7 @@ FactoryBot.define do
     end
   end
 
-  factory :cat, class: 'Monster' do
+  factory :harpy, class: 'Monster' do
     name { 'Harpy' }
     size { 'Medium' }
     species { 'Beast' }
