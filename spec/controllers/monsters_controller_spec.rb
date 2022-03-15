@@ -1,17 +1,16 @@
 require 'rails_helper'
 
-describe MonstersController do
+describe MonstersController, type: :feature do
   include Capybara::DSL
 
   describe "GET /index" do
-    before { visit monsters_path }
-
-    it 'returns http success' do
-      expect(response).to have_http_status(:success)
-    end
+    before { visit '/monsters' }
 
     it 'renders the index page' do
+      # visit '/monsters'
+      puts page
       expect(page).to have_selector('h1', text: 'Monsters')
+      expect(page).to have('.card', count: 3)
     end
   end
 end
