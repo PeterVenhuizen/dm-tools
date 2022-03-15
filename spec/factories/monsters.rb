@@ -10,7 +10,7 @@ FactoryBot.define do
     armor_class { '12 (leather armor)' }
     hit_points { 11 }
     hit_dice { '2d8 + 2' }
-    ability_score do
+    ability_scores do
       {
         strength: 11,
         dexterity: 12,
@@ -39,7 +39,7 @@ FactoryBot.define do
     armor_class { '12' }
     hit_points { 2 }
     hit_dice { '1d4' }
-    ability_score do
+    ability_scores do
       {
         strength: 3,
         dexterity: 15,
@@ -69,7 +69,7 @@ FactoryBot.define do
     armor_class { '11' }
     hit_points { 38 }
     hit_dice { '7d8 + 7' }
-    ability_score do
+    ability_scores do
       {
         strength: 12,
         dexterity: 13,

@@ -1,0 +1,9 @@
+.card
+  header.card-header
+    .card-header-title = monster.name
+
+  footer.card-footer
+    = link_to 'show', monster_path(monster), class: 'card-footer-item'
+    = link_to 'edit', edit_monster_path(monster), class: 'card-footer-item'
+    = link_to 'delete', monster_path(monster), class: 'card-footer-item',\
+      data: { turbo_method: :delete, turbo_confirm: 'Are you sure?' }
