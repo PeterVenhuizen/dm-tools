@@ -27,6 +27,28 @@ class MonstersController < ApplicationController
     end
   end
 
+  def update
+    respond_to do |format|
+      if @monster.update(monster_params)
+        format.html { redirect_to monster_url(@monster), notice: 'Monster was successfully updated.' }
+        format.json { render :show, status: :ok, location: @monster }
+        format.turbo_stream
+      else
+        format.html { render :edit, status: :unprocessable_entity }
+        format.json { render json: @monster.errors, status: :unprocessable_entity }
+      end
+    end
+  end
+
+  def destroy
+    @monster.destroy
+
+    respond_to do |format|
+      format.html { redirect_to monsters_url, notice: 'Monster was successfully destroyed.' }
+      format.json { head :no_content }
+    end
+  end
+
   private
 
   def set_monster

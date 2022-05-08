@@ -68,14 +68,15 @@ RSpec.describe '/monsters', type: :request do
   describe 'PATCH /update' do
     context 'with valid parameters' do
       let(:new_attributes) do
-        skip('Add a hash of attributes valid for your model')
+        attributes_for(:bandit, name: 'Bandit v2', hit_points: 20)
       end
 
       it 'updates the requested monster' do
         monster = Monster.create! valid_attributes
         patch monster_url(monster), params: { monster: new_attributes }
         monster.reload
-        skip('Add assertions for updated state')
+        follow_redirect!
+        expect(response.body.include?('BANDIT V2')).to be(true)
       end
 
       it 'redirects to the monster' do
@@ -90,7 +91,7 @@ RSpec.describe '/monsters', type: :request do
       it "renders a successful response (i.e. to display the 'edit' template)" do
         monster = Monster.create! valid_attributes
         patch monster_url(monster), params: { monster: invalid_attributes }
-        expect(response).to be_successful
+        expect(response).to have_http_status(:unprocessable_entity)
       end
     end
   end
