@@ -14,31 +14,18 @@
   font-style: italic;
 }
 
-#error_explanation {
-  @include rounded-border;
-
-  margin-top: 1em;
-  padding: 1em;
-  border: 1px solid $hard;
-
-  h2 {
-    text-align: left;
-    font-weight: bold;
-    color: $hard;
-    overflow: hidden;
-  }
-
-  ul li {
-    // font-size: 12px;
-    margin-left: 1em;
-  }
-}
-
 .form-group {
   margin-block: .25em;
 
   label {
     margin-right: .5em;
+  }
+
+  & span.error {
+    display: block;
+    color: $hard;
+    margin-top: .25em;
+    font-size: .9em;
   }
 }
 
