@@ -1,0 +1,37 @@
+- presenter = MonsterPresenter.new @monster
+- editable ||= false
+
+article.rectangle.stat-block
+  header
+    h2 = presenter.big_name
+    span.cursive = presenter.size_type_and_alignment
+
+  hr
+
+  section
+    = stat_group 'armor class', @monster.armor_class
+    = stat_group 'hit points', presenter.hp
+    = stat_group 'speed', presenter.speed
+
+  hr
+
+  section.ability-scores
+    - @monster.ability_scores.each do |ability, score|
+      .ability-score
+        label = presenter.shorten(ability)
+        span = presenter.score_and_modifier(score)
+
+  hr
+
+  section
+    = stat_group 'languages', presenter.languages
+    = stat_group 'challenge', presenter.challenge_and_xp
+    = stat_group 'proficiency bonus', presenter.proficiency_bonus
+
+  - if editable
+    hr
+
+    footer
+      = link_to 'edit', edit_monster_path(@monster)
+      = link_to 'delete', monster_path(@monster), 
+                          data: { turbo_method: :delete, turbo_confirm: 'Are you sure?' }

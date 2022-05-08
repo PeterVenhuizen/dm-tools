@@ -27,7 +27,8 @@ class Monster < ApplicationRecord
             presence: {
               minimum: 2,
               message: 'must be at least 2 characters long'
-            }
+            },
+            uniqueness: { case_sensitive: false }
 
   validates :size,
             inclusion: { in: %w[Tiny Small Medium Large Huge Gargantuan] }

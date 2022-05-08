@@ -1,12 +1,7 @@
-- button_class = 'button is-outlined'
-.box.is-flex.is-flex-direction-row.is-justify-content-space-between.is-align-items-center
-  h2 = monster.name
-
-  .field.is-grouped
-    p.control
-      = link_to 'show', monster_path(monster), class: button_class + ' is-success'
-    p.control
-      = link_to 'edit', edit_monster_path(monster), class: button_class + ' is-info'
-    p.control
-      = link_to 'delete', monster_path(monster), class: button_class + ' is-danger',\
-                            data: { turbo_method: :delete, turbo_confirm: 'Are you sure?' }
+.summary-row
+  .name = link_to monster.name, monster_path(monster)
+  .controls
+    = link_to 'show', monster_path(monster)
+    = link_to 'edit', edit_monster_path(monster)
+    = link_to 'delete', monster_path(monster),
+                        data: { turbo_method: :delete, turbo_confirm: 'Are you sure?' }

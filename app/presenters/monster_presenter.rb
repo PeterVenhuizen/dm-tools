@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class MonsterPresenter
   def initialize(monster)
     @monster = monster
@@ -46,6 +48,6 @@ class MonsterPresenter
   private
 
   def prepend_sign(value)
-    "%+d" % value
+    format('%+d', value)
   end
 end

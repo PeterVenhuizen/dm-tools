@@ -1,0 +1,75 @@
+@mixin align-center {
+  align-items: center;
+}
+
+@mixin flex-col {
+  display: flex;
+  flex-direction: column;
+}
+
+@mixin flex-row {
+  display: flex;
+  align-items: center;
+}
+
+@mixin floating-effect {
+  -webkit-box-shadow: 3px 3px 3px -3px rgba(0,0,0,0.5); 
+  box-shadow: 3px 3px 3px -3px rgba(0,0,0,0.5);
+}
+
+@mixin rectangle {
+  background-color: $white;
+  padding: 1em;
+  border: 1px solid $border-color;
+  @include floating-effect;  
+}
+
+@mixin rounded-border {
+  border-radius: 5px;
+}
+
+@mixin rounded-top {
+  border-top-left-radius: 5px;
+  border-top-right-radius: 5px;
+}
+
+@mixin rounded-bottom {
+  border-bottom-left-radius: 5px;
+  border-bottom-right-radius: 5px;
+}
+
+@mixin space-between {
+  justify-content: space-between;
+}
+
+.summary-row {
+  @include rectangle;
+  @include flex-row;
+  @include space-between;
+
+  margin-block: .25em;
+
+  .name { 
+    text-transform: uppercase;
+    font-weight: bold;
+    width: 80%; 
+  }
+  .controls { 
+    a {
+      margin-inline: .5em;
+    }
+  }
+
+  &:first-of-type {
+    @include rounded-top;
+  }
+
+  &:last-of-type {
+    @include rounded-bottom;
+  }
+}
+
+// @mixin summary-row($name-width) {
+//   .name: $name-width;
+//   .control
+// }

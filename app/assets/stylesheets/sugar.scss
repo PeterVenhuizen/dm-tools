@@ -1,0 +1,92 @@
+.ability-scores {
+  @include flex-row;
+  @include space-between;
+}
+
+.ability-score {
+  @include flex-col;
+  @include align-center;
+
+  padding: .5em;
+}
+
+.cursive {
+  font-style: italic;
+}
+
+#error_explanation {
+  @include rounded-border;
+
+  margin-top: 1em;
+  padding: 1em;
+  border: 1px solid $hard;
+
+  h2 {
+    text-align: left;
+    font-weight: bold;
+    color: $hard;
+    overflow: hidden;
+  }
+
+  ul li {
+    // font-size: 12px;
+    margin-left: 1em;
+  }
+}
+
+.form-group {
+  margin-block: .25em;
+
+  label {
+    margin-right: .5em;
+  }
+}
+
+.flex-col {
+  @include flex-col;
+}
+
+.flex-row {
+  @include flex-row;
+}
+
+.rectangle {
+  @include rectangle;
+}
+
+.stat-block {
+  max-width: 400px;
+  font-size: .9em;
+  margin-bottom: 1em;
+
+  label {
+    font-weight: bold;
+  }
+
+  hr {
+    margin-block: .35em;
+  }
+
+  footer {
+    @include flex-row;
+    @include space-between;
+    margin-top: .5em;
+  }
+}
+
+.stat-group {
+  margin-block: 0.25em;
+
+  label {
+    text-transform: capitalize;
+    margin-right: .25em;
+  }
+}
+
+
+/* MARGINS */
+.m-1 { margin: 1em; }
+.mlr { margin-inline: 1em; }
+.mtb { margin-block: 1em; }
+
+/* PADDING */

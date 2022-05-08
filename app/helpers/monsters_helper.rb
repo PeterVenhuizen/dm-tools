@@ -1,7 +1,9 @@
+# frozen_string_literal: true
+
 module MonstersHelper
   def stat_group(label, stat)
-    "<div class='stat-group'>\
-    <label class='has-text-weight-bold'>#{label.titleize}</label>\
-    <span>#{stat}</span></div>".html_safe
+    content_tag(:div, '', class: 'stat-group') do
+      content_tag(:label, label.titleize) + content_tag(:span, stat)
+    end
   end
 end

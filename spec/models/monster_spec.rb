@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'rails_helper'
 
 RSpec.describe Monster, type: :model do
@@ -6,9 +8,23 @@ RSpec.describe Monster, type: :model do
     expect(bandit).to be_valid
   end
 
-  it 'has a name at least 2 characters long' do
-    invalid_bandit = build(:bandit, name: '')
-    expect(invalid_bandit).not_to be_valid
+  describe 'name' do
+    it 'must be at least 2 characters long' do
+      invalid_bandit = build(:bandit, name: '')
+      expect(invalid_bandit).not_to be_valid
+    end
+
+    it 'must be unique' do
+      create(:bandit)
+      duplicate_bandit = build(:bandit)
+      expect(duplicate_bandit).not_to be_valid
+    end
+
+    it 'must be unique no matter the casing' do
+      create(:bandit)
+      duplicate_bandit = build(:bandit, name: 'BANDIT')
+      expect(duplicate_bandit).not_to be_valid
+    end
   end
 
   it 'has a default challenge rating of zero' do
@@ -66,9 +82,9 @@ RSpec.describe Monster, type: :model do
       expect(invalid_bandit).not_to be_valid
     end
 
-    it 'has a fixed selection' do
-      species = %w[Aberration Beast Celestial Construct Dragon Elemental Fey Fiend Giant Humanoid Monstrosity Ooze Plant Undead]
-      species.each do |s|
+    %w[Aberration Beast Celestial Construct Dragon Elemental Fey Fiend Giant Humanoid Monstrosity Ooze
+       Plant Undead].each do |s|
+      it "#{s} is valid" do
         bandit = build(:bandit, species: s)
         expect(bandit).to be_valid
       end
